@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+
+    <div class="container">
+        <div class="row">
+            <!-- Goals application -->
+            <div class="col-md-12 goals-banner container card card-border-primary">
+                <div class="row">
+                    <div class="col-md-10 rating">
+                        <img src="{% static 'img/gold_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                        <img src="{% static 'img/black_star.png' %}" alt="" class="star-img">
+                    </div>
+                    <div class="col-md-2 information d-flex justify-content-end">
+                        <div class="row">
+                            <div class="goal-header-text text-end">
+                                <h3>Reading</h3>
+                            </div>
+                            <div class="goal-footer-text text-end">
+                                <h1>0/21 days</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ToDo's application -->
+            <div class="col-md-7 ms-auto card card-border-warning">
+                <div class="card-header bg-white">
+                    <h3>In Progress tasks</h3>
+                </div>
+                <div class="card-body">
+                    {% for todo in todos %}
+                        <div class="card bg-light mb-2">
+                            <div class="card-body p-3">
+                                <form action="{% url 'todo_del' todo_id=todo.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="button submit" class="btn-close btn-sm d-inline-block position-relative float-end" aria-label="Close"></button>
+                                </form>
+                                <h5>{{ todo.title }}</h5>
+                                <p>{{ todo.memo }}</p>
+                                <div class="float-right mt-n1">
+                                    <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
+                                    <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
+                                </div>
+                                <a class="btn btn-outline-primary btn-sm float-end d-inline ms-1" href="{% url 'todo_status_upd' todo_id=todo.id status=3 %}">Block</a>
+                                <a class="btn btn-outline-primary btn-sm float-end d-inline" href="{% url 'todo_status_upd' todo_id=todo.id status=4 %}">Move to Complete</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

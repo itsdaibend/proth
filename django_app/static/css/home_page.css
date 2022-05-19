@@ -1,0 +1,39 @@
+body{
+    background: #fafafa
+}
+.star-img{
+    height:3em;
+}
+.goals-banner{
+    height:180px;
+    padding: 20px;
+    margin: 5% 0%;
+    border: 1px solid rgba(0,0,0,.125);
+}
+.rating{
+    padding-top: 4%;
+}
+.rating img{
+    height:40px;
+}
+.information{
+    padding-top: 2%;
+}
+.goal-header-text h3{
+    margin:0;
+}
+.goal-footer-text h1{
+    font-family: 'Nunito Sans', sans-serif;
+}
+.todos-banner{
+    background-color: rgba(228, 228, 228, 0.644);
+    text-align: center;
+}
+.todos-banner ul{
+    list-style-type:none;
+    padding-left: 0;
+}
+.todos-post{
+    font-family:'Nunito Sans Bold', sans-serif;
+    text-align: left;
+}

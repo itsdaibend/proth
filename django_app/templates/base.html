@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!-- loading bootstrap5 -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- loading base style -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- icon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+    <title>Proth - {{ page_title }}</title>
+</head>
+<body>
+  {% if request.user.is_authenticated %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'img/icon_img.png' %}" class="logotype" alt="">
+        <span class="logotype-text">Proth</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-md-end links" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <!-- Calendar app which helps do tasks in time. -->
+            <a class="nav-link" href="#">Planner</a>
+          </li>
+          <li class="nav-item">
+            <!-- Todo's app which made for tracking tasks and makes notes, reminders. -->
+            <a class="nav-link" aria-current="page" href="{% url 'todos' %}">Todos</a>
+          </li>
+          <li class="nav-item">
+            <!-- App for implementing personal goals in terms of 21 days. -->
+            <a class="nav-link" href="#">Goals</a>
+          </li>
+          <li class="nav-item">
+            <!-- visualization app for Telegram bot which made for learning new words in another language. -->
+            <a class="nav-link" href="#">Learning</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu">
+              {% if request.user.is_superuser %}
+              <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin page</a></li>
+              {% endif %}
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Log Out</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <div class=" nickname-letter">{{ request.user.username|first|capfirst }}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  {% endif %}
+    {% block content %}
+    {% endblock %}
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script language="JavaScript" type="text/javascript" src="{% static 'js/base.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    
+</body>
+</html>

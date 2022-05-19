@@ -1,0 +1,25 @@
+.logotype {
+    height: 3em;
+    padding: 0rem 1rem;
+}
+.logotype-text {
+    vertical-align: middle;
+    font-size: 2.5rem;
+    color: #ba9036;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.links {
+    padding-right: 3rem ;
+}
+.nickname-letter {
+    color: black;
+    text-align: center;
+    background:white;
+    height:2.5rem;
+    width:2.5rem;
+    border-radius:50%;
+    font-size: 1.5rem;   
+}
+a:active{
+    color:#ba9036;
+}
