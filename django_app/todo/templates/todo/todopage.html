@@ -44,7 +44,15 @@
                                     <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
                                     <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
                                 </div>
-                                <a class="btn btn-outline-primary btn-sm float-end mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=2 %}">Take In Progress</a>
+                                <div class="w-100 mt-1 drop-block">
+                                    <button class="btn-sm btn mt-1 btn-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-fill" viewBox="0 0 16 16" style="margin-bottom:2px;">
+                                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg>
+                                        <span> Edit</span>
+                                    </button>
+                                    <a class="btn btn-outline-primary btn-sm float-end mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=2 %}">Take In Progress</a>
+                                </div>
                             </div>
                         </div>
                         {% endif %}
@@ -91,8 +99,16 @@
                                     <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
                                     <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
                                 </div>
-                                <a class="btn btn-outline-primary btn-sm float-end d-inline ms-1 mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=3 %}">Block</a>
-                                <a class="btn btn-outline-primary btn-sm float-end d-inline mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=4 %}">Move to Complete</a>
+                                <div class="w-100 mt-1 drop-block">
+                                    <button class="btn-sm btn mt-1 btn-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-fill" viewBox="0 0 16 16" style="margin-bottom:2px;">
+                                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg>
+                                        <span> Edit</span>
+                                    </button>
+                                    <a class="btn btn-outline-primary btn-sm float-end d-inline ms-1 mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=3 %}">Block</a>
+                                    <a class="btn btn-outline-primary btn-sm float-end d-inline mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=4 %}">Complete</a>
+                                </div>
                             </div>
                         </div>
                         {% endif %}
@@ -139,7 +155,15 @@
                                     <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
                                     <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
                                 </div>
-                                <a class="btn btn-outline-primary btn-sm float-end d-inline ms-1 mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=2 %}">Take In Progress</a>
+                                <div class="w-100 mt-1 drop-block">
+                                    <button class="btn-sm btn mt-1 btn-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-fill" viewBox="0 0 16 16" style="margin-bottom:2px;">
+                                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg>
+                                        <span> Edit</span>
+                                    </button>
+                                    <a class="btn btn-outline-primary btn-sm float-end d-inline ms-1 mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=2 %}">Take In Progress</a>
+                                </div>
                             </div>
                         </div>
                         {% endif %}
@@ -187,7 +211,15 @@
                                     <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
                                     <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
                                 </div>
-                                <a class="btn btn-outline-primary btn-sm float-end d-inline mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=1 %}">Return to Todo</a>
+                                <div class="w-100 mt-1 drop-block">
+                                    <button class="btn-sm btn mt-1 btn-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-fill" viewBox="0 0 16 16" style="margin-bottom:2px;">
+                                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg>
+                                        <span> Edit</span>
+                                    </button>
+                                    <a class="btn btn-outline-primary btn-sm float-end d-inline mt-1" href="{% url 'todo_status_upd' todo_id=todo.id status=1 %}">Return to Todo</a>
+                                </div>
                             </div>
                         </div>
                         {% endif %}

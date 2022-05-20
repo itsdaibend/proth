@@ -138,3 +138,39 @@ body{
     cursor: pointer;
     display: none;
   }
+.drop-block{
+    display:none;
+}
+.card-body:hover > .drop-block{
+    display:block;
+    height:2.5em;   
+}
+.btn-secondary{
+    background-color: #c7a55b;
+    border-color: #c7a55b;
+}
+.btn-secondary:hover{
+    background-color: #ba9036;
+    border-color: #ba9036;
+}
+.btn-outline-primary {
+    padding-top:5px;
+    color: #fff;
+    border-color: #6c6e70;
+    background-color: #6c6e70;
+}
+.btn-outline-primary:hover {
+    border-color: #212529;
+    color: #fff;
+    background-color: #212529;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #c7a55b;
+    border-color: #c7a55b;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #ba9036;
+    border-color: #ba9036;
+}
