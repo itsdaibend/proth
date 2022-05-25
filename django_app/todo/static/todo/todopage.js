@@ -1,6 +1,11 @@
 // Function for creation modal window.
 $(document).ready(function() {
     $('a.TodoCreationWindow').click( function(event){
+      
+      let status = $(this).attr("id");
+      let form = $(".form-group")[0];
+      form.status.value = status;
+
       event.preventDefault();
       $('#SiteOverlay').fadeIn(297,	function(){
         $('#TodoCreationWindow') 

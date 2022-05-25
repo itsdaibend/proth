@@ -39,7 +39,7 @@
                                     <button type="button submit" class="btn-close btn-sm d-inline-block position-relative float-end" aria-label="Close"></button>
                                 </form>
                                 <h5 id="todo_title_{{todo.id}}">{{ todo.title }}</h5>
-                                <p id="todo_memo_{{todo.id}}">{{ todo.memo }}</p>
+                                <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaks }}</p>
                                 <div class="float-right mt-n1">
                                     <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
                                     <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
@@ -57,7 +57,7 @@
                         </div>
                         {% endif %}
                         {% endfor %}
-                        <a href="#" class="btn btn-primary btn-block TodoCreationWindow">Add new</a>
+                        <a href="#" id="1" class="btn btn-primary btn-block TodoCreationWindow">Add new</a>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                                     <button type="button submit" class="btn-close btn-sm d-inline-block position-relative float-end" aria-label="Close"></button>
                                 </form>
                                 <h5 id="todo_title_{{todo.id}}">{{ todo.title }}</h5>
-                                <p id="todo_memo_{{todo.id}}">{{ todo.memo }}</p>
+                                <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaks }}</p>
                                 <div class="float-right mt-n1">
                                     <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
                                     <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
@@ -113,7 +113,7 @@
                         </div>
                         {% endif %}
                         {% endfor %}
-                        <a href="#" class="btn btn-primary btn-block TodoCreationWindow">Add new</a>
+                        <a href="#" id="2" class="btn btn-primary btn-block TodoCreationWindow">Add new</a>
                     </div>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                                     <button type="button submit" class="btn-close btn-sm d-inline-block position-relative float-end" aria-label="Close"></button>
                                 </form>
                                 <h5 id="todo_title_{{todo.id}}">{{ todo.title }}</h5>
-                                <p id="todo_memo_{{todo.id}}">{{ todo.memo }}</p>
+                                <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaks }}</p>
                                 <div class="float-right mt-n1">
                                     <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
                                     <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
@@ -168,7 +168,7 @@
                         </div>
                         {% endif %}
                         {% endfor %}
-                        <a href="#" class="btn btn-primary btn-block TodoCreationWindow">Add new</a>
+                        <a href="#" id="3" class="btn btn-primary btn-block TodoCreationWindow">Add new</a>
 
                     </div>
                 </div>
@@ -206,7 +206,7 @@
                                     <button type="button submit" class="btn-close btn-sm d-inline-block position-relative float-end" aria-label="Close"></button>
                                 </form>
                                 <h5 id="todo_title_{{todo.id}}">{{ todo.title }}</h5>
-                                <p id="todo_memo_{{todo.id}}">{{ todo.memo }}</p>
+                                <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaks }}</p>
                                 <div class="float-right mt-n1">
                                     <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
                                     <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
@@ -224,7 +224,7 @@
                         </div>
                         {% endif %}
                         {% endfor %}
-                        <a href="#" class="btn btn-primary btn-block TodoCreationWindow">Add new</a>
+                        <a href="#" id="4" class="btn btn-primary btn-block TodoCreationWindow">Add new</a>
                     </div>
                 </div>
             </div>
