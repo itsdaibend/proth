@@ -37,3 +37,14 @@ body{
     font-family:'Nunito Sans Bold', sans-serif;
     text-align: left;
 }
+.btn-outline-primary {
+    padding-top:5px;
+    color: #fff;
+    border-color: #6c6e70;
+    background-color: #6c6e70;
+}
+.btn-outline-primary:hover {
+    border-color: #212529;
+    color: #fff;
+    background-color: #212529;
+}

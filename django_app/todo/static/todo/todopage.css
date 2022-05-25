@@ -1,62 +1,48 @@
 body{
     background: #fafafa
 }
-
 .card {
     margin-bottom: 1.5rem;
     box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .025)
 }
-
 .card-border-primary {
     border-top: 4px solid #2979ff
 }
-
 .card-border-secondary {
     border-top: 4px solid #efefef
 }
-
 .card-border-success {
     border-top: 4px solid #00c853
 }
-
 .card-border-info {
     border-top: 4px solid #3d5afe
 }
-
 .card-border-warning {
     border-top: 4px solid #ff9100
 }
-
 .card-border-danger {
     border-top: 4px solid #ff1744
 }
-
 .card-border-light {
     border-top: 4px solid #f8f9fa
 }
-
 .card-border-dark {
     border-top: 4px solid #6c757d
 }
-
 .card-header {
     border-bottom-width: 1px
 }
-
 .card-actions a {
     color: #495057;
     text-decoration: none
 }
-
 .card-actions svg {
     width: 16px;
     height: 16px
 }
-
 .card-actions .dropdown {
     line-height: 1.4
 }
-
 .card-title {
     font-weight: 500;
     margin-top: .1rem
@@ -65,7 +51,6 @@ body{
 .card-subtitle {
     font-weight: 400
 }
-
 .card-table {
     margin-bottom: 0
 }
@@ -87,7 +72,6 @@ body{
     margin-bottom: 1.5rem;
     box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,.025);
 }
-
 .card {
     position: relative;
     display: -ms-flexbox;
@@ -105,7 +89,6 @@ body{
 .card-header:first-child {
     border-radius: calc(.2rem - 1px) calc(.2rem - 1px) 0 0;
 }
-
 .card-header {
     border-bottom-width: 1px;
 }
@@ -186,4 +169,20 @@ body{
     color: #fff;
     background-color: #ba9036;
     border-color: #ba9036;
+}
+.priority-1{
+    border-left: 0.2rem solid#56e090;
+    padding-left: 0.8rem !important;
+}
+.priority-2{
+    border-left: 0.2rem solid#c7a55b;
+    padding-left: 0.8rem !important;
+}
+.priority-3{
+    border-left: 0.2rem solid #f56767;
+    padding-left: 0.8rem !important;
+}
+.priority-4{
+    border-left: 0.2rem solid#bd3333;
+    padding-left: 0.8rem !important;
 }
