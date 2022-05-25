@@ -15,7 +15,7 @@ class TodoLabel(models.Model):
 class Todo(models.Model):
     class Priority(models.TextChoices):
         LOW = '1', 'LOW'
-        MIDDLE = '2', 'MIDDLE'
+        MEDIUM = '2', 'MEDIUM'
         HIGH = '3', 'HIGH'
         EXTRA_HIGH = '4', 'EXTRA HIGH'
     
@@ -35,7 +35,7 @@ class Todo(models.Model):
     expired_at = models.DateTimeField(null=True, blank=True)
     is_completed = models.BooleanField(default=False)
     label = models.ForeignKey(TodoLabel, default=DEFAULT_LABEL_ID, on_delete=models.CASCADE)
-    priority = models.CharField(max_length=2, choices=Priority.choices, default=Priority.MIDDLE)
+    priority = models.CharField(max_length=2, choices=Priority.choices, default=Priority.MEDIUM)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.TODO)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
