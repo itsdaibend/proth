@@ -47,10 +47,22 @@ $(function(){
       var id = $(this).attr("id");
       var title = $('#todo_title_' + id).text();
       var memo = $('#todo_memo_' + id).text();
+
+      if($(this).parent('div').parent('div').hasClass('priority-4')){
+        var priority = 4;
+      } else if($(this).parent('div').parent('div').hasClass('priority-3')){
+        var priority = 3;
+      } else if($(this).parent('div').parent('div').hasClass('priority-2')){
+        var priority = 2;
+      } else if($(this).parent('div').parent('div').hasClass('priority-1')){
+        var priority = 1;
+      };
+
       let form = $(".form-group")[1];
       form.todo_id.value = id;
       form.title.value = title;
       form.memo.value = memo;
+      form.priority.value = priority;
 
       $("form").attr("action", ("/todos/update/" + id));
   });
