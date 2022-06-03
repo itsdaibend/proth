@@ -46,7 +46,7 @@ $(function(){
   $(".btn-secondary").on("click", function(){
       var id = $(this).attr("id");
       var title = $('#todo_title_' + id).text();
-      var memo = $('#todo_memo_' + id).text();
+      var memo = $('#todo_memo_' + id).html().replaceAll("<br>", "\n");
 
       if($(this).parent('div').parent('div').hasClass('priority-4')){
         var priority = 4;
