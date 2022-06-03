@@ -6,6 +6,6 @@ from .views import HomePageView
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='index'),
-    path('', HomePageView, name='home'),
+    path('', HomePageView.as_view(), name='home'),
     path('todos/', include('todo.urls')),
 ]
