@@ -67,3 +67,10 @@ $(function(){
       $("form").attr("action", ("/todos/update/" + id));
   });
 });
+
+$(".card .mb-3").mouseenter( function() {
+  $(this).find(".drop-block").show(200);
+});
+$(".card .mb-3").mouseleave( function() {
+  $(this).find(".drop-block").hide(200);
+});

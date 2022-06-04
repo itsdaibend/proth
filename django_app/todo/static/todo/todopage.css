@@ -137,10 +137,6 @@ body{
 .drop-block{
     display:none;
 }
-.card-body:hover > .drop-block{
-    display:block;
-    height:2.5em;   
-}
 .btn-secondary{
     background-color: #c7a55b;
     border-color: #c7a55b;
