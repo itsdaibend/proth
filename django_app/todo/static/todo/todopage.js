@@ -47,6 +47,8 @@ $(function(){
       var id = $(this).attr("id");
       var title = $('#todo_title_' + id).text();
       var memo = $('#todo_memo_' + id).html().replaceAll("<br>", "\n");
+      var label = $(this).parent('div').prev().children('div').attr("id");
+      var status = $(this).parent('div').prev().attr("id");
 
       if($(this).parent('div').parent('div').hasClass('priority-4')){
         var priority = 4;
@@ -63,6 +65,8 @@ $(function(){
       form.title.value = title;
       form.memo.value = memo;
       form.priority.value = priority;
+      form.label.value = label;
+      form.status.value = status;
 
       $("form").attr("action", ("/todos/update/" + id));
   });
