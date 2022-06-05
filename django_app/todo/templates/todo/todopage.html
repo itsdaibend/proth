@@ -41,8 +41,8 @@
                                 <h5 id="todo_title_{{todo.id}}">{{ todo.title }}</h5>
                                 <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaksbr }}</p>
                                 <div class="float-right mt-n1">
-                                    <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
-                                    <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
+                                    <div class="float-left bg-white border d-inline-block py-1 px-2 rounded-pill"><span>{{ todo.label }}</span></div>
+                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:12px">{{ todo.created_at }}</span>
                                 </div>
                                 <div class="w-100 mt-1 drop-block">
                                     <button class="btn-sm btn mt-1 btn-secondary TodoUpdateWindow" id="{{ todo.id }}">
@@ -100,8 +100,8 @@
                                 <h5 id="todo_title_{{todo.id}}">{{ todo.title }}</h5>
                                 <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaksbr }}</p>
                                 <div class="float-right mt-n1">
-                                    <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
-                                    <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
+                                    <div class="float-left bg-white border d-inline-block py-1 px-2 rounded-pill"><span>{{ todo.label }}</span></div>
+                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:12px;">{{ todo.created_at }}</span>
                                 </div>
                                 <div class="w-100 mt-1 drop-block">
                                     <button class="btn-sm btn mt-1 btn-secondary TodoUpdateWindow" id="{{ todo.id }}">
@@ -162,8 +162,8 @@
                                 <h5 id="todo_title_{{todo.id}}">{{ todo.title }}</h5>
                                 <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaksbr }}</p>
                                 <div class="float-right mt-n1">
-                                    <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
-                                    <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
+                                    <div class="float-left bg-white border d-inline-block py-1 px-2 rounded-pill"><span>{{ todo.label }}</span></div>
+                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:12px;">{{ todo.created_at }}</span>
                                 </div>
                                 <div class="w-100 mt-1 drop-block">
                                     <button class="btn-sm btn mt-1 btn-secondary TodoUpdateWindow" id="{{ todo.id }}">
@@ -221,8 +221,8 @@
                                 <h5 id="todo_title_{{todo.id}}">{{ todo.title }}</h5>
                                 <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaksbr }}</p>
                                 <div class="float-right mt-n1">
-                                    <div class="float-left bg-white nickname-letter border d-inline-block"><span>{{ request.user.username |first|capfirst }}</span></div>
-                                    <span class="d-inline-block position-relative float-end" style="font-size:12px;padding-top:10px;">{{ todo.created_at }}</span>
+                                    <div class="float-left bg-white border d-inline-block py-1 px-2 rounded-pill label-{{todo.label.id}}"><span>{{ todo.label }}</span></div>
+                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:12px;">{{ todo.created_at }}</span>
                                 </div>
                                 <div class="w-100 mt-1 drop-block">
                                     <button class="btn-sm btn mt-1 btn-secondary TodoUpdateWindow" id="{{ todo.id }}">

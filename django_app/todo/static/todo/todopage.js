@@ -68,6 +68,7 @@ $(function(){
   });
 });
 
+// Two functions for dropping down div with "Edit" and "Status" buttons.
 $(".card .mb-3").mouseenter( function() {
   $(this).find(".drop-block").show(200);
 });
