@@ -42,7 +42,7 @@
                                 <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaksbr }}</p>
                                 <div class="float-right mt-n1" id="{{ todo.status }}">
                                     <div class="float-left bg-white border d-inline-block py-1 px-2 rounded-pill" id="{{todo.label.id}}"><span>{{ todo.label }}</span></div>
-                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:12px">{{ todo.created_at }}</span>
+                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:0.75em;" title="Deadline">{{ todo.expired_at | date:"m/d/y H:m" }}</span>
                                 </div>
                                 <div class="w-100 mt-1 drop-block">
                                     <button class="btn-sm btn mt-1 btn-secondary TodoUpdateWindow" id="{{ todo.id }}">
@@ -101,7 +101,7 @@
                                 <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaksbr }}</p>
                                 <div class="float-right mt-n1" id="{{ todo.status }}">
                                     <div class="float-left bg-white border d-inline-block py-1 px-2 rounded-pill" id="{{todo.label.id}}"><span>{{ todo.label }}</span></div>
-                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:12px;">{{ todo.created_at }}</span>
+                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:0.75em;" title="Deadline">{{ todo.expired_at | date:"m/d/y H:m" }}</span>
                                 </div>
                                 <div class="w-100 mt-1 drop-block">
                                     <button class="btn-sm btn mt-1 btn-secondary TodoUpdateWindow" id="{{ todo.id }}">
@@ -163,7 +163,7 @@
                                 <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaksbr }}</p>
                                 <div class="float-right mt-n1" id="{{ todo.status }}">
                                     <div class="float-left bg-white border d-inline-block py-1 px-2 rounded-pill" id="{{todo.label.id}}"><span>{{ todo.label }}</span></div>
-                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:12px;">{{ todo.created_at }}</span>
+                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:0.75em;" title="Deadline">{{ todo.expired_at | date:"m/d/y H:m" }}</span>
                                 </div>
                                 <div class="w-100 mt-1 drop-block">
                                     <button class="btn-sm btn mt-1 btn-secondary TodoUpdateWindow" id="{{ todo.id }}">
@@ -222,7 +222,7 @@
                                 <p id="todo_memo_{{todo.id}}">{{ todo.memo | linebreaksbr }}</p>
                                 <div class="float-right mt-n1" id="{{ todo.status }}">
                                     <div class="float-left bg-white border d-inline-block py-1 px-2 rounded-pill" id="{{todo.label.id}}"><span>{{ todo.label }}</span></div>
-                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:12px;">{{ todo.created_at }}</span>
+                                    <span class="d-inline-block position-relative float-end pt-2" style="font-size:0.75em;" title="Deadline">{{ todo.expired_at | date:"m/d/y H:m" }}</span>
                                 </div>
                                 <div class="w-100 mt-1 drop-block">
                                     <button class="btn-sm btn mt-1 btn-secondary TodoUpdateWindow" id="{{ todo.id }}">
