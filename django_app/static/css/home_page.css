@@ -48,3 +48,27 @@ body{
     color: #fff;
     background-color: #212529;
 }
+.priority-1{
+    border-left: 0.2rem solid#56e090;
+    padding-left: 0.8rem !important;
+}
+.priority-2{
+    border-left: 0.2rem solid#c7a55b;
+    padding-left: 0.8rem !important;
+}
+.priority-3{
+    border-left: 0.2rem solid #f56767;
+    padding-left: 0.8rem !important;
+}
+.priority-4{
+    border-left: 0.2rem solid#bd3333;
+    padding-left: 0.8rem !important;
+}
+.card-header a{
+    color:#212529;
+    text-decoration: none;
+}
+.card-header a:hover{
+    color:#212529;
+    text-decoration: underline;
+}
