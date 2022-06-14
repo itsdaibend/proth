@@ -8,4 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='index'),
     path('', HomePageView.as_view(), name='home'),
     path('todos/', include('todo.urls')),
+    path('auth/', include('users.urls')),
 ]

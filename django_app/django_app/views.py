@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.views.generic import ListView
 
 from todo.models import Todo
@@ -14,4 +15,7 @@ class HomePageView(ListView):
         return context
     
     def get_queryset(self):
+        if not self.request.user.is_authenticated:
+            return redirect('sign_in')
+
         return Todo.objects.filter(user=self.request.user, status=2)

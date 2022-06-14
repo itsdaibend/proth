@@ -25,7 +25,7 @@ class Todo(models.Model):
         ON_HOLD = '3', 'ON HOLD'
         COMPLETE = '4', 'COMPLETE'
 
-    DEFAULT_LABEL_ID = 10 # 'Other'
+    DEFAULT_LABEL_ID = 1 # 'Other'
 
     title = models.CharField(max_length=150)
     memo = models.TextField(blank=True)

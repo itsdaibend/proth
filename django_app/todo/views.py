@@ -13,6 +13,9 @@ class TodoPageView(View):
     }
 
     def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('sign_in')
+
         update_form = TodoUpdateForm()
         form = TodoCreationForm()
         

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'todo',
+    'users',
 
     'widget_tweaks',
 ]
@@ -75,7 +76,7 @@ DATABASES = {
 }
 
 
-
+AUTH_USER_MODEL = 'users.RegularUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
