@@ -7,10 +7,6 @@ from todo.models import Todo
 
 class TodoPageView(View):
     context = {'page_title': 'Todos'}
-    form_classes = {
-        'form': TodoCreationForm,
-        'update_form': TodoUpdateForm,
-    }
 
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
@@ -35,10 +31,15 @@ class TodoPageView(View):
 
         elif 'Update_status' in request.POST:
             todo = Todo.objects.get(id=todo_id)
-            if request.user == todo.user:
+            if request.user == todo.user and status == 4:
                 todo.status = status
+                todo.is_completed = True
                 todo.save()
             
+            elif request.user == todo.user:
+                todo.status = status
+                todo.save()
+
             return redirect('todos')
 
         elif 'Create' in request.POST:

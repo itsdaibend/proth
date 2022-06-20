@@ -13,7 +13,7 @@ $(function(){
   $(".btn-secondary").on("click", function(){
       var id = $(this).attr("id");
       var title = $('#todo_title_' + id).text();
-      var memo = $('#todo_memo_' + id).html().replaceAll("<br>", "\n").replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>');;
+      var memo = $('#todo_memo_' + id).html().replaceAll("<br>", "\n").replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>');
       var label = $(this).parent('div').prev().children('div').attr("id");
       var status = $(this).parent('div').prev().attr("id");
 
@@ -34,7 +34,6 @@ $(function(){
       form.priority.value = priority;
       form.label.value = label;
       form.status.value = status;
-
       $("form").attr("action", ("/todos/update/" + id));
   });
 });
