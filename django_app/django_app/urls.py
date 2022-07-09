@@ -9,4 +9,5 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('todos/', include('todo.urls')),
     path('auth/', include('users.urls')),
+    path('api/v1/', include('languages.api.urls')),
 ]

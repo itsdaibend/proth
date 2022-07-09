@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
     'todo',
     'users',
+    'languages',
 
     'widget_tweaks',
 ]
