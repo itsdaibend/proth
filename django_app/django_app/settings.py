@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'languages',
 
     'widget_tweaks',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

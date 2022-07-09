@@ -14,20 +14,20 @@ class LanguagesLabel(models.Model):
 
 class Phrase(models.Model):
     class LanguageToChoose(models.TextChoices):
-        ENGLISH = '1', 'English'
-        UKRAINIAN = '2', 'Ukrainian'
-        RUSSIAN = '3', 'Russian'
-        GERMAN = '4', 'German'
-        POLISH = '5', 'Polish'
-        ITALIAN = '6', 'Italian'
-        FRENCH = '7', 'French'
-        SPANISH = '8', 'Spanish'
-        TURKISH = '9', 'Turkish'
+        ENGLISH = 'EN', 'English'
+        UKRAINIAN = 'UKR', 'Ukrainian'
+        RUSSIAN = 'RU', 'Russian'
+        GERMAN = 'DEU', 'German'
+        POLISH = 'PL', 'Polish'
+        ITALIAN = 'IT', 'Italian'
+        FRENCH = 'FR', 'French'
+        SPANISH = 'SP', 'Spanish'
+        TURKISH = 'TR', 'Turkish'
 
     DEFAULT_LABEL_ID = 1 # 'Other'
 
-    source_lang = models.CharField(max_length=2, choices=LanguageToChoose.choices, default=LanguageToChoose.ENGLISH)
-    target_lang = models.CharField(max_length=2, choices=LanguageToChoose.choices, default=LanguageToChoose.RUSSIAN)
+    source_lang = models.CharField(max_length=3, choices=LanguageToChoose.choices, default=LanguageToChoose.ENGLISH)
+    target_lang = models.CharField(max_length=3, choices=LanguageToChoose.choices, default=LanguageToChoose.RUSSIAN)
     source_text = models.CharField(max_length=200)
     target_text = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)

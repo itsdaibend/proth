@@ -10,5 +10,5 @@ urlpatterns = [
     path('todos/', include('todo.urls')),
     path('auth/', include('users.urls')),
     path('languages/', include('languages.urls')),
-    path('api/v1/', include('languages.api.urls')),
+    path('api/v1/languages/', include('languages.api.urls')),
 ]
