@@ -8,3 +8,13 @@
     background-color: #ba9036;
     border-color: #ba9036;
 }
+.input-group{
+    width: 95.5%;
+}
+body {
+    background-color: #fafafa;
+}
+.button-color{
+    border-color: #ced4da !important;
+    color: #6b7075 !important;
+}
