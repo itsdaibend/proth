@@ -32,7 +32,7 @@ class Phrase(models.Model):
     target_text = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     comment = models.CharField(max_length=200, blank=True)
-    label = models.ForeignKey(LanguagesLabel, default=DEFAULT_LABEL_ID, on_delete=models.CASCADE)
+    label = models.ForeignKey(LanguagesLabel, default=DEFAULT_LABEL_ID, on_delete=models.CASCADE, blank=True)
     translated_times = models.PositiveIntegerField(default=0, blank=True)
     not_translated_times = models.PositiveIntegerField(default=0, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
