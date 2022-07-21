@@ -2,6 +2,7 @@ from rest_framework import generics, serializers, permissions
 
 from ..models import Phrase
 
+
 class PhraseSerializer(serializers.ModelSerializer):
     created_at = serializers.ReadOnlyField()
     class Meta:
