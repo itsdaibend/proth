@@ -18,11 +18,18 @@ class LanguagesPageView(View):
         self.context['phrases'] = Phrase.objects.filter(user=request.user)
         return render(request, 'languages/languages_page.html', self.context)
     
-    def post(self, request, *args, **kwargs):
+    def post(self, request, phrase_id=None):
         if 'Create' in request.POST:
             form = PhraseCreationForm(request.POST)
             form.instance.user = request.user
             if form.is_valid():
                 form.save()
+
+                return redirect('languages')
+
+        elif 'Delete' in request.POST:
+            if request.method == "POST":
+                phrase = Phrase.objects.get(id=phrase_id)
+                phrase.delete()
 
                 return redirect('languages')

@@ -33,9 +33,14 @@
             <div class="card-body p-3 ">
                 {% for phrase in phrases %}
                 <div class="card p-1 mt-1 bg-light">
-                    <h5 class="m-0 ps-2">
+                    <h5 class="m-0 ps-2 position-relative d-inline-block">
                         {{ phrase.source_text }} >>> {{ phrase.target_text }}
+                        <form action="{% url 'languages' phrase_id=phrase.id %}" class="float-end position-relative" method="post">
+                            {% csrf_token %}
+                            <button type="button submit" class="btn-close btn-sm " aria-label="Close" name="Delete"></button>
+                        </form>
                     </h5>
+                    
                 </div>
                 {% endfor %}
             </div>
