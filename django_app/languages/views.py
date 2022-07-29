@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.views import View
+from django.db.models import Q
 
 from .models import Phrase
 from .forms import PhraseCreationForm
@@ -28,8 +29,16 @@ class LanguagesPageView(View):
                 return redirect('languages')
 
         elif 'Delete' in request.POST:
-            if request.method == "POST":
-                phrase = Phrase.objects.get(id=phrase_id)
-                phrase.delete()
+            phrase = Phrase.objects.get(id=phrase_id)
+            phrase.delete()
 
-                return redirect('languages')
+            return redirect('languages')
+        
+        elif 'Search' in request.POST:
+            search_data = request.POST['Search']
+            
+            self.context['phrases'] = Phrase.objects.filter(
+                Q(source_text__icontains=search_data) | Q(target_text__icontains=search_data),
+                user=request.user
+            )
+            return render(request, 'languages/languages_page.html', self.context)
