@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'todo',
     'users',
     'languages',
+    'goals',
 
     # Django third-party apps
     'widget_tweaks',
