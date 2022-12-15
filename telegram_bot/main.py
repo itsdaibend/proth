@@ -8,9 +8,14 @@ from aiogram.utils import executor
 from states import AuthenticationGroup
 from config import TELEGRAM_BOT_KEY
 
+from models import User
+import database
 
 bot = Bot(token=TELEGRAM_BOT_KEY)
 dp = Dispatcher(bot, storage=MemoryStorage())
+
+async def on_startup():
+    await database.setup()
 
 @dp.message_handler(commands=['start'])
 async def start_chat(message: types.Message):
@@ -43,20 +48,26 @@ async def get_second_auth_answer(message: types.Message, state: FSMContext):
     await state.update_data(password=answer)
     
     data = await state.get_data()
-    await message.answer(f"Your username - {data.get('username')}, password - {data.get('password')}")
     async with aiohttp.ClientSession(trust_env=True) as session:
-        async with session.post('http://localhost:8000/api/v1/token/', data=data) as resp:
-            assert resp.status == 200
-            refresh_token = await resp.text()
-            # вероятно надо сделать state для refresh token
+        async with session.post('http://localhost:8000/api/v1/auth/token/login/', data=data) as resp:
+            token = await resp.text()
+            user = User(username=data.get('username'), password=data.get('password'), token=token[15:-2], tg_user_id=message.from_user.id)
+            await user.save()
+            await message.answer('You successfuly authenticated!')
     
+    await state.update_data(token=token)
     await state.finish()
 
 @dp.message_handler(lambda message: message.text == "List of my words")
-async def list_of_words(message: types.Message):
+async def get_all_phrases(message: types.Message):
+    token = await User.filter(tg_user_id=message.from_user.id).first().values("token")
+    data ={'Authorization': 'Token ' + token.get('token')}
     async with aiohttp.ClientSession(trust_env=True) as session:
-        async with session.get('http://localhost:8000/api/v1/token/') as resp:
-            print(resp.status)
-    await message.reply(await resp.text())
+        async with session.get('http://localhost:8000/api/v1/languages/phrases', headers=data) as resp:
+            for phrase in await resp.json():
+                await message.answer(f"{phrase['source_text']} >>> {phrase['target_text']}")
 
-executor.start_polling(dp, skip_updates=True)
+
+if __name__ == "__main__":
+    executor.start(dp, on_startup())
+    executor.start_polling(dp, skip_updates=True)

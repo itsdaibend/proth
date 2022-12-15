@@ -11,4 +11,6 @@ urlpatterns = [
     path('auth/', include('users.urls')),
     path('languages/', include('languages.urls')),
     path('api/v1/languages/', include('languages.api.urls')),
+    path('api/v1/auth/', include('djoser.urls')),
+    path('api/v1/auth/', include('djoser.urls.authtoken')),
 ]

@@ -1,4 +1,5 @@
 from rest_framework import generics, serializers, permissions
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 
 from ..models import Phrase
 
@@ -11,6 +12,7 @@ class PhraseSerializer(serializers.ModelSerializer):
 
 class PhraseListCreate(generics.ListCreateAPIView):
     serializer_class = PhraseSerializer
+    authentication_classes = [TokenAuthentication, SessionAuthentication, BasicAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
