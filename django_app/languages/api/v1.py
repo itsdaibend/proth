@@ -15,10 +15,8 @@ class PhraseListCreate(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication, SessionAuthentication, BasicAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
-    def get_queryset(self):
-        queryset = Phrase.objects.filter(user=self.request.user)
-
-        return queryset
+    def get_queryset(self): 
+        return Phrase.objects.filter(user=self.request.user)
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
