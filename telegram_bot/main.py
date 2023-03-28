@@ -1,7 +1,6 @@
+import database
 from aiogram import types
 from aiogram.utils import executor
-
-import database
 from handlers.authentication import *
 from handlers.phrases import *
 from keyboards import main_keyboard

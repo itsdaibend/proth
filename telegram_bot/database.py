@@ -1,5 +1,10 @@
-from config import (POSTGRES_DB, POSTGRES_HOST, POSTGRES_PASSWORD,
-                    POSTGRES_PORT, POSTGRES_USER)
+from config import (
+    POSTGRES_DB,
+    POSTGRES_HOST,
+    POSTGRES_PASSWORD,
+    POSTGRES_PORT,
+    POSTGRES_USER,
+)
 from tortoise import Tortoise
 
 TORTOISE_ORM = {

@@ -1,7 +1,9 @@
 from rest_framework import generics, permissions, serializers
-from rest_framework.authentication import (BasicAuthentication,
-                                           SessionAuthentication,
-                                           TokenAuthentication)
+from rest_framework.authentication import (
+    BasicAuthentication,
+    SessionAuthentication,
+    TokenAuthentication,
+)
 
 from ..models import Phrase
 
