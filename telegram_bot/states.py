@@ -12,3 +12,8 @@ class ExtendPhrasesGroup(StatesGroup):
     target_lang = State()
     source_text = State()
     target_text = State()
+
+
+class TranslateRandomPhraseGroup(StatesGroup):
+    phrase = State()
+    translation = State()

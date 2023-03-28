@@ -4,7 +4,8 @@ from aiogram.dispatcher import FSMContext
 from keyboards import languages_keyboard, main_keyboard
 from misc import *
 from models import User
-from states import ExtendPhrasesGroup
+from states import ExtendPhrasesGroup, TranslateRandomPhraseGroup
+from utils import COUNTRY_CODES
 
 
 @dp.message_handler(text="Save a word to the glossary", state=None)
@@ -81,3 +82,37 @@ async def get_all_phrases(message: types.Message):
                     f"{phrase['source_text']} >>> {phrase['target_text']}",
                     reply_markup=main_keyboard(),
                 )
+
+
+@dp.message_handler(
+    lambda message: message.text == "Translate random phrase", state=None
+)
+async def translate_random_phrase(message: types.Message, state=FSMContext):
+    token = await User.filter(tg_user_id=message.from_user.id).first().values("token")
+    data = {"Authorization": "Token " + token.get("token")}
+    async with aiohttp.ClientSession(trust_env=True) as session:
+        async with session.get(
+            "http://localhost:8000/api/v1/languages/phrases/random_phrase", headers=data
+        ) as resp:
+            if resp.status == 200:
+                phrase = await resp.json()
+                await message.answer(
+                    f"Translate: <b>{phrase['source_text']}</b> into {COUNTRY_CODES[phrase['target_lang']]}",
+                    reply_markup=main_keyboard(),
+                    parse_mode="html",
+                )
+                await state.set_data({"phrase": phrase["target_text"]})
+                await TranslateRandomPhraseGroup.translation.set()
+
+
+@dp.message_handler(
+    lambda message: message.text, state=TranslateRandomPhraseGroup.translation
+)
+async def check_phrase(message: types.Message, state=FSMContext):
+    data = await state.get_data("phrase")
+    if data["phrase"].lower() != message.text.lower():
+        await message.answer("Nope, try again!")
+        await TranslateRandomPhraseGroup.translation.set()
+    else:
+        await message.answer("You're right!")
+        await state.finish()

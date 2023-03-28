@@ -4,6 +4,7 @@ from rest_framework.authentication import (
     SessionAuthentication,
     TokenAuthentication,
 )
+from rest_framework.generics import RetrieveAPIView
 
 from ..models import Phrase
 
@@ -41,3 +42,12 @@ class PhraseRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
         queryset = Phrase.objects.filter(user=user)
 
         return queryset
+
+
+class RandomPhraseViewSet(RetrieveAPIView):
+    serializer_class = PhraseSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        user = self.request.user
+        return Phrase.objects.filter(user=user).order_by("?").first()

@@ -4,6 +4,7 @@ from aiogram.types import (
     KeyboardButton,
     ReplyKeyboardMarkup,
 )
+from utils import COUNTRY_CODES
 
 
 def main_keyboard():
@@ -16,6 +17,7 @@ def main_keyboard():
                 text="Save a word to the glossary",
             )
         ],
+        [KeyboardButton(text="Translate random phrase")],
     ]
     keyboard = ReplyKeyboardMarkup()
     for btn in buttons:
@@ -26,15 +28,8 @@ def main_keyboard():
 
 def languages_keyboard():
     buttons = [
-        [InlineKeyboardButton(text="English", callback_data="EN")],
-        [InlineKeyboardButton(text="Ukrainian", callback_data="UA")],
-        [InlineKeyboardButton(text="Russian", callback_data="RU")],
-        [InlineKeyboardButton(text="German", callback_data="DE")],
-        [InlineKeyboardButton(text="Polish", callback_data="PL")],
-        [InlineKeyboardButton(text="Italian", callback_data="IT")],
-        [InlineKeyboardButton(text="French", callback_data="FR")],
-        [InlineKeyboardButton(text="Spanish", callback_data="ES")],
-        [InlineKeyboardButton(text="Turkish", callback_data="TR")],
+        [InlineKeyboardButton(text=v, callback_data=k)]
+        for k, v in COUNTRY_CODES.items()
     ]
     keyboard = InlineKeyboardMarkup()
     for btn in buttons:
