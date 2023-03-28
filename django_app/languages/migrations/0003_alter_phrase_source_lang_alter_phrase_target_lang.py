@@ -4,20 +4,47 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('languages', '0002_alter_phrase_not_translated_times_and_more'),
+        ("languages", "0002_alter_phrase_not_translated_times_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='phrase',
-            name='source_lang',
-            field=models.CharField(choices=[('EN', 'English'), ('UKR', 'Ukrainian'), ('RU', 'Russian'), ('DEU', 'German'), ('PL', 'Polish'), ('IT', 'Italian'), ('FR', 'French'), ('SP', 'Spanish'), ('TR', 'Turkish')], default='EN', max_length=3),
+            model_name="phrase",
+            name="source_lang",
+            field=models.CharField(
+                choices=[
+                    ("EN", "English"),
+                    ("UKR", "Ukrainian"),
+                    ("RU", "Russian"),
+                    ("DEU", "German"),
+                    ("PL", "Polish"),
+                    ("IT", "Italian"),
+                    ("FR", "French"),
+                    ("SP", "Spanish"),
+                    ("TR", "Turkish"),
+                ],
+                default="EN",
+                max_length=3,
+            ),
         ),
         migrations.AlterField(
-            model_name='phrase',
-            name='target_lang',
-            field=models.CharField(choices=[('EN', 'English'), ('UKR', 'Ukrainian'), ('RU', 'Russian'), ('DEU', 'German'), ('PL', 'Polish'), ('IT', 'Italian'), ('FR', 'French'), ('SP', 'Spanish'), ('TR', 'Turkish')], default='RU', max_length=3),
+            model_name="phrase",
+            name="target_lang",
+            field=models.CharField(
+                choices=[
+                    ("EN", "English"),
+                    ("UKR", "Ukrainian"),
+                    ("RU", "Russian"),
+                    ("DEU", "German"),
+                    ("PL", "Polish"),
+                    ("IT", "Italian"),
+                    ("FR", "French"),
+                    ("SP", "Spanish"),
+                    ("TR", "Turkish"),
+                ],
+                default="RU",
+                max_length=3,
+            ),
         ),
     ]
