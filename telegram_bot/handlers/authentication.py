@@ -1,13 +1,14 @@
 import aiohttp
 from aiogram import types
 from aiogram.dispatcher import FSMContext
+
+from keyboards import main_keyboard
 from misc import *
 from models import User
 from states import AuthenticationGroup
-from keyboards import main_keyboard
 
 
-@dp.message_handler(lambda message: message.text == 'Authenticate', state=None)
+@dp.message_handler(lambda message: message.text == "Authenticate", state=None)
 async def authenticate(message: types.Message):
     await message.answer(
         "Enter your username on Proth website:",
