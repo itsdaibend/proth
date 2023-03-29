@@ -1,3 +1,5 @@
+import logging
+
 import aiohttp
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -9,6 +11,9 @@ from states import AuthenticationGroup
 
 @dp.message_handler(lambda message: message.text == "Authenticate", state=None)
 async def authenticate(message: types.Message):
+    logging.info(
+        'Handler "Authenticate" has been called by User {message.from_user.id}.'
+    )
     await message.answer(
         "Enter your username on Proth website:",
         parse_mode="html",
@@ -19,6 +24,9 @@ async def authenticate(message: types.Message):
 
 @dp.message_handler(state=AuthenticationGroup.username)
 async def get_first_auth_answer(message: types.Message, state: FSMContext):
+    logging.info(
+        f'Handler "Authenticate" has been called by User {message.from_user.id}, state Username = {message.text}'
+    )
     answer = message.text
     await state.update_data(username=answer)
     await message.answer("Enter your password on Proth website:")
@@ -27,6 +35,9 @@ async def get_first_auth_answer(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=AuthenticationGroup.password)
 async def get_second_auth_answer(message: types.Message, state: FSMContext):
+    logging.info(
+        f'Handler "Authenticate" has been called by User {message.from_user.id}, state Password.'
+    )
     answer = message.text
     await state.update_data(password=answer)
 
@@ -36,6 +47,9 @@ async def get_second_auth_answer(message: types.Message, state: FSMContext):
             "http://localhost:8000/api/v1/auth/token/login/", data=data
         ) as resp:
             if resp.status == 200:
+                logging.info(
+                    f"Successful authentication for User {message.from_user.id}."
+                )
                 token = await resp.text()
                 user = User(
                     username=data.get("username"),
@@ -47,5 +61,8 @@ async def get_second_auth_answer(message: types.Message, state: FSMContext):
                 await message.answer("You successfuly authenticated!")
                 await state.update_data(token=token)
             else:
+                logging.info(
+                    f"Unsuccessful authentication for User {message.from_user.id}."
+                )
                 await message.answer("This user does not exist.")
     await state.finish()

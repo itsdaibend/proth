@@ -9,3 +9,5 @@ COUNTRY_CODES = {
     "ES": "Spanish",
     "TR": "Turkish",
 }
+
+LOGGING_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"

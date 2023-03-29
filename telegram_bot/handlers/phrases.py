@@ -1,3 +1,5 @@
+import logging
+
 import aiohttp
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -10,6 +12,9 @@ from utils import COUNTRY_CODES
 
 @dp.message_handler(text="Save a word to the glossary", state=None)
 async def add_phrase_callback(message: types.Message):
+    logging.info(
+        f'Handler "Add phrase" has been called by User {message.from_user.id}.'
+    )
     await message.answer(
         text="Select a language of source phrase, please",
         parse_mode="html",
@@ -20,6 +25,9 @@ async def add_phrase_callback(message: types.Message):
 
 @dp.callback_query_handler(lambda c: c.data, state=ExtendPhrasesGroup.source_lang)
 async def get_first_auth_answer(query: types.CallbackQuery, state=FSMContext):
+    logging.info(
+        f'Handler "Authenticate" has been called by User {query.from_user.id}, state Source Language = {query.data}'
+    )
     await bot.answer_callback_query(query.id)
     answer = query.data
     await state.update_data(source_lang=answer)
@@ -34,6 +42,9 @@ async def get_first_auth_answer(query: types.CallbackQuery, state=FSMContext):
 
 @dp.callback_query_handler(lambda c: c.data, state=ExtendPhrasesGroup.target_lang)
 async def get_second_auth_answer(query: types.CallbackQuery, state=FSMContext):
+    logging.info(
+        f'Handler "Authenticate" has been called by User {query.from_user.id}, state Target Language = {query.data}'
+    )
     answer = query.data
     await state.update_data(target_lang=answer)
     await bot.send_message(
@@ -44,6 +55,9 @@ async def get_second_auth_answer(query: types.CallbackQuery, state=FSMContext):
 
 @dp.message_handler(state=ExtendPhrasesGroup.source_text)
 async def get_third_auth_answer(message: types.Message, state=FSMContext):
+    logging.info(
+        f'Handler "Authenticate" has been called by User {message.from_user.id}, state Source Text = {message.text}'
+    )
     answer = message.text
     await state.update_data(source_text=answer)
     await message.answer("Enter the translation of your phrase", parse_mode="html")
@@ -52,6 +66,9 @@ async def get_third_auth_answer(message: types.Message, state=FSMContext):
 
 @dp.message_handler(state=ExtendPhrasesGroup.target_text)
 async def get_fourth_auth_answer(message: types.Message, state=FSMContext):
+    logging.info(
+        f'Handler "Authenticate" has been called by User {message.from_user.id}, state Target Text = {message.text}'
+    )
     answer = message.text
     await state.update_data(target_text=answer)
     token = await User.filter(tg_user_id=message.from_user.id).first().values("token")
@@ -71,6 +88,9 @@ async def get_fourth_auth_answer(message: types.Message, state=FSMContext):
 
 @dp.message_handler(lambda message: message.text == "My glossary")
 async def get_all_phrases(message: types.Message):
+    logging.info(
+        f'Handler "My glossary" has been called by User {message.from_user.id}'
+    )
     token = await User.filter(tg_user_id=message.from_user.id).first().values("token")
     data = {"Authorization": "Token " + token.get("token")}
     async with aiohttp.ClientSession(trust_env=True) as session:
@@ -88,6 +108,9 @@ async def get_all_phrases(message: types.Message):
     lambda message: message.text == "Translate random phrase", state=None
 )
 async def translate_random_phrase(message: types.Message, state=FSMContext):
+    logging.info(
+        f'Handler "Translate random phrase" has been called by User {message.from_user.id}'
+    )
     token = await User.filter(tg_user_id=message.from_user.id).first().values("token")
     data = {"Authorization": "Token " + token.get("token")}
     async with aiohttp.ClientSession(trust_env=True) as session:
@@ -109,10 +132,14 @@ async def translate_random_phrase(message: types.Message, state=FSMContext):
     lambda message: message.text, state=TranslateRandomPhraseGroup.translation
 )
 async def check_phrase(message: types.Message, state=FSMContext):
+    logging.info(
+        f'Handler "Translate random phrase" has been called by User {message.from_user.id}, state translation, {await state.get_data("phrase")}'
+    )
     data = await state.get_data("phrase")
     if data["phrase"].lower() != message.text.lower():
         await message.answer("Nope, try again!")
         await TranslateRandomPhraseGroup.translation.set()
     else:
+        logging.info(f"Successful translation for user {message.from_user.id}.")
         await message.answer("You're right!")
         await state.finish()
