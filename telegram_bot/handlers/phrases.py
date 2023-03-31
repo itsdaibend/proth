@@ -1,4 +1,5 @@
 import logging
+import random
 
 import aiohttp
 from aiogram import types
@@ -7,7 +8,7 @@ from keyboards import languages_keyboard, main_keyboard
 from misc import *
 from models import User
 from states import ExtendPhrasesGroup, TranslateRandomPhraseGroup
-from utils import COUNTRY_CODES
+from utils import COUNTRY_CODES, PHRASE_CORRECT_ANSWERS, PHRASE_WRONG_ANSWERS
 
 
 @dp.message_handler(text="Save a word to the glossary", state=None)
@@ -124,7 +125,7 @@ async def translate_random_phrase(message: types.Message, state=FSMContext):
                     reply_markup=main_keyboard(),
                     parse_mode="html",
                 )
-                await state.set_data({"phrase": phrase["target_text"]})
+                await state.set_data(phrase)
                 await TranslateRandomPhraseGroup.translation.set()
 
 
@@ -133,13 +134,33 @@ async def translate_random_phrase(message: types.Message, state=FSMContext):
 )
 async def check_phrase(message: types.Message, state=FSMContext):
     logging.info(
-        f'Handler "Translate random phrase" has been called by User {message.from_user.id}, state translation, {await state.get_data("phrase")}'
+        f'Handler "Translate random phrase" has been called by User {message.from_user.id}, state translation'
     )
-    data = await state.get_data("phrase")
-    if data["phrase"].lower() != message.text.lower():
-        await message.answer("Nope, try again!")
+    phrase = await state.get_data("phrase")
+    token = await User.filter(tg_user_id=message.from_user.id).first().values("token")
+    data = {"Authorization": "Token " + token.get("token")}
+    if phrase["target_text"].lower() != message.text.lower():
+        await message.answer(random.choice(PHRASE_WRONG_ANSWERS))
+        async with aiohttp.ClientSession(trust_env=True) as session:
+            async with session.patch(
+                f"http://localhost:8000/api/v1/languages/phrases/{phrase['id']}",
+                headers=data,
+                data={"not_translated_times": int(phrase["not_translated_times"] + 1)},
+            ):
+                pass
         await TranslateRandomPhraseGroup.translation.set()
     else:
+        async with aiohttp.ClientSession(trust_env=True) as session:
+            async with session.patch(
+                f"http://localhost:8000/api/v1/languages/phrases/{phrase['id']}",
+                headers=data,
+                data={"translated_times": int(phrase["translated_times"] + 1)},
+            ) as resp:
+                if resp.status == 200:
+                    answer = await resp.json()
         logging.info(f"Successful translation for user {message.from_user.id}.")
-        await message.answer("You're right!")
+        await message.answer(
+            f"{random.choice(PHRASE_CORRECT_ANSWERS)} You translated phrase <b>{answer['source_text']}</b> - {answer['translated_times']} times.",
+            parse_mode="html",
+        )
         await state.finish()
