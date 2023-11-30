@@ -17,11 +17,12 @@ Here you can keep your personal goals, track your updates, plan your time and le
 3. pyenv virtualenv 3.8.10 proth
 4. pyenv activate proth
 5. pip install -r requirements.txt
-6. psql
-7. CREATE DATABASE proth;
-8. python manage.py migrate
-9. python manage.py createsuperuser
-10. python manage.py runserver
+6. sudo apt install postgresql
+7. psql
+8. CREATE DATABASE proth;
+9. python manage.py migrate
+10. python manage.py createsuperuser
+11. python manage.py runserver
 ```
 ## How to run?
 ```
